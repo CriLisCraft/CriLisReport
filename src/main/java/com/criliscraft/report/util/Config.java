@@ -14,11 +14,11 @@ public class Config {
 
     private static File dataFolder;
 
-    private static File configFile;
     private static File reportsFile;
+    private static File dataFile;
 
-    private static FileConfiguration config;
     private static FileConfiguration reports;
+    private static FileConfiguration data;
 
     @SuppressWarnings("static-access")
     public Config(CriLisReport plugin) {
@@ -27,34 +27,34 @@ public class Config {
 
         this.dataFolder = plugin.getDataFolder();
 
-        this.configFile = new File(plugin.getDataFolder(), "config.yml");
         this.reportsFile = new File(plugin.getDataFolder(), "reports.yml");
+        this.dataFile = new File(plugin.getDataFolder(), "data.yml");
 
-        this.config = YamlConfiguration.loadConfiguration(configFile);
         this.reports = YamlConfiguration.loadConfiguration(reportsFile);
+        this.data = YamlConfiguration.loadConfiguration(dataFile);
     }
 
     public static void createAllFiles() {
-        if (!(configFile.exists())) {
-            plugin.getLogger().log(Level.INFO, "config.yml not found, Creating a new one.");
-            plugin.saveResource("config.yml", true);
-        }
         if (!(reportsFile.exists())) {
             plugin.getLogger().log(Level.INFO, "reports.yml not found, Creating a new one.");
             plugin.saveResource("reports.yml", true);
         }
-    }
-
-    public static File getConfigFile() {
-        return  configFile;
+        if (!(dataFile.exists())) {
+            plugin.getLogger().log(Level.INFO, "data.yml not found, Creating a new one.");
+            plugin.saveResource("data.yml", true);
+        }
     }
 
     public static File getReportsFile() {
         return reportsFile;
     }
 
-    public static FileConfiguration getConfig() {
-        return config;
+    public static File getDataFile() {
+        return dataFile;
+    }
+
+    public static FileConfiguration getData() {
+        return data;
     }
 
     public static FileConfiguration getReports() {
@@ -69,11 +69,11 @@ public class Config {
         }
     }
 
-    public static void saveConfig() {
-        saveFile(configFile, config);
-    }
-
     public static void saveReports() {
         saveFile(reportsFile, reports);
+    }
+
+    public static void saveData() {
+        saveFile(dataFile, data);
     }
 }

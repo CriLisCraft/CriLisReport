@@ -6,7 +6,7 @@
 
     <groupId>com.criliscraft.report</groupId>
     <artifactId>CriLisReport</artifactId>
-    <version>1.0.0-B1</version>
+    <version>1.0.0-B11</version>
 
     <repositories>
         <repository>

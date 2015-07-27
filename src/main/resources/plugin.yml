@@ -1,0 +1,32 @@
+name: CriLisReports
+version: 1.0.0-B11
+main: com.criliscraft.report.CriLisReport
+description: Allows players to report incidents.
+author: Chaka
+website: http://criliscraft.noip.me/
+commands:
+  report:
+    description: Allows the sender to create a new report.
+    usage: /<command> <...report>
+permissions:
+  clcrep.*:
+    description: Grants all of the plugins permissions.
+    default: op
+    children:
+      clcrep.mod.*: true
+      clcrep.player.*: true
+      clcrep.cmd.repadmin: true
+      clcrep.admin: true
+  clcrep.mod.*:
+    description: Grants all of the mod permissions.
+    default: false
+    children:
+      clcrep.cmd.repmod: true
+      clcrep.mod: true
+      clcrep.mod: true
+  clcrep.player.*:
+    description: Grants all of the player permissions.
+    default: false
+    children:
+      clcrep.cmd.report: true
+      clcrep.player: true
